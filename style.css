@@ -1,12 +1,57 @@
 body{
     margin:0;
-    padding:0;
-    background:white;
+    overflow:hidden;
     font-family:Arial, sans-serif;
-    text-align:center;
 }
 
-h1{
-    color:red;
-    margin-top:40px;
+#infoBox{
+
+position:fixed;
+
+bottom:15px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:85%;
+
+max-width:380px;
+
+background:rgba(255,255,255,0.95);
+
+padding:15px;
+
+border-radius:15px;
+
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+
+display:none;
+
+z-index:999;
+
+}
+
+#infoBox h2{
+
+margin-top:0;
+
+text-align:center;
+
+color:#d40000;
+
+}
+
+#infoBox ul{
+
+padding-left:20px;
+
+}
+
+#infoBox p{
+
+font-size:15px;
+
+line-height:1.4;
+
 }
