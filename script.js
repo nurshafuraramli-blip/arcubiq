@@ -1,25 +1,42 @@
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
 
-const marker=document.querySelector("[mindar-image-target]");
-const audio=document.querySelector("#heartbeat");
-const info=document.querySelector("#infoBox");
+    const marker = document.querySelector('[mindar-image-target]');
+    const heartbeat = document.getElementById("heartbeat");
+    const heartVoice = document.getElementById("heartVoice");
 
-marker.addEventListener("targetFound",()=>{
+    marker.addEventListener("targetFound", () => {
 
-audio.play();
+        // Mainkan bunyi degupan
+        heartbeat.currentTime = 0;
+        heartbeat.play();
 
-info.style.display="block";
+        // Selepas 1.5 saat, mainkan suara AI
+       setTimeout(() => {
 
-});
+    console.log("Suara AI sedang dimainkan...");
 
-marker.addEventListener("targetLost",()=>{
+    heartVoice.currentTime = 0;
 
-audio.pause();
+    heartVoice.play()
+    .then(() => {
+        console.log("Berjaya mainkan suara AI.");
+    })
+    .catch(err => {
+        console.log("ERROR:", err);
+    });
 
-audio.currentTime=0;
+}, 1500);
 
-info.style.display="none";
+    });
 
-});
+    marker.addEventListener("targetLost", () => {
+
+        heartbeat.pause();
+        heartbeat.currentTime = 0;
+
+        heartVoice.pause();
+        heartVoice.currentTime = 0;
+
+    });
 
 });
